@@ -13,14 +13,62 @@
 
 // code example for Window Binding
 
+"use strict";
+// Not sure what to put for this one
+
+
 // Principle 2
 
 // code example for Implicit Binding
+
+const cats = {
+    name: "Seyyr",
+    food: "tuna",
+    toy: "ball",
+    play: function() {
+        console.log(`${name} loves to play ${this.toy}`)
+    }
+}
+
+cats.play();
 
 // Principle 3
 
 // code example for New Binding
 
+function disneyChar(name) {
+    this.greeter = name;
+    this.greeter = greeter;
+    this.greeting = "Whats the stich";
+    this.speak = function() {
+        console.log(`${this.greeter}, ${this.greeting}`)
+    }
+}
+
+const Kim = {
+    greeter: "Ron",
+    greeting: "Whats the sitch",
+    speak = function() {
+        console.log(`${this.greeter}, ${this.greeting}`)
+    }
+}
+
+Kim.speak();
+
+
 // Principle 4
 
 // code example for Explicit Binding
+
+const car = {
+    model: "tesla"
+}
+
+const carChar = ["navy", "sleek", "fast" ];
+
+function drive(trait1, trait2, trait3) {
+    console.log(`The ${this.car} is ${carChar}`);
+}
+
+drive.bind(car, ...carChar);
+drive.apply(car, carChar);
