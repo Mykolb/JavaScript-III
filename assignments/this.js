@@ -4,7 +4,7 @@
 * 1. Global Binding: when "this" tries to bind to window (bad!)
 * 2. Implicit Binding: when a function is called & the object on the left side of the dot get "this"; specifically for objects
 * 3. Explicit binding: used to control within functions; when call or apply method is used, this is explicitly defined
-* 4. New Binding: applies "this" binding to conrtuctor function; refers to object that is created & returned by constructor function 
+* 4. New Binding: applies "this" binding to constuctor function; refers to object that is created & returned by constructor function 
 *
 * write out a code example of each explanation above
 */
@@ -13,8 +13,13 @@
 
 // code example for Window Binding
 
-"use strict";
-// Not sure what to put for this one
+function pickColor(color) {
+    console.log(this);
+    return color;
+  }
+  pickColor("pink");
+
+// created a window message- works!
 
 
 // Principle 2
@@ -32,43 +37,64 @@ const cats = {
 
 cats.play();
 
+//works!
+
 // Principle 3
 
 // code example for New Binding
-
-function disneyChar(name) {
-    this.greeter = name;
-    this.greeter = greeter;
-    this.greeting = "Whats the stich";
+function sayName(name) {
+    this.name = name;
+    name = 'Mykol';
+    this.lastName = 'Benning';
     this.speak = function() {
-        console.log(`${this.greeter}, ${this.greeting}`)
-    }
-}
+      console.log(`Hello, my name is ${this.name} ${this.lastName}`)
+  }
+  }
+  
+  const Mykol = new sayName('Mykol');
+  
+  
+  Mykol.speak();
 
-const Kim = {
-    greeter: "Ron",
-    greeting: "Whats the sitch",
-    speak = function() {
-        console.log(`${this.greeter}, ${this.greeting}`)
-    }
-}
-
-Kim.speak();
-
+//works!
 
 // Principle 4
 
 // code example for Explicit Binding
 
-const car = {
-    model: "tesla"
-}
+//playing with .call//
+const cat = {
+    name: 'Stripes',
+  }
+  
+  const traits = ['cuddly', 'sweet', 'rude'];
+  
+  
+  function personality(){
+    console.log(`${this.name} is ${traits}`)
+  }
+  
+  personality.call(cat);
 
-const carChar = ["navy", "sleek", "fast" ];
+  //playing with .apply// 
 
-function drive(trait1, trait2, trait3) {
-    console.log(`The ${this.car} is ${carChar}`);
-}
+  const cat = {
+    name: 'Stripes',
+  }
+  
+  const traits1 = ['fierce'];
+  const traits2 = ['tired'];
+  const traits3 = ['short'];
+  
+  
+  function personality(){
+    console.log(`${this.name} is ${traits1}`)
+  }
+  
+  personality.apply(cat);
 
-drive.bind(car, ...carChar);
-drive.apply(car, carChar);
+  //testing out bind// 
+  const testingOutBind = personality.bind(cat);
+
+
+  //works!
