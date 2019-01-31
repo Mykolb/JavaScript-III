@@ -82,33 +82,13 @@ CharacterStats.prototype.takeDamage = function() {
 
   Humanoid.prototype.greet = function() {
     return `${this.name} offers a greeting in ${this.language}.`;
+  }
+    Humanoid.prototype.laugh = function() {
+    return `${this.laugh}`;
+  }
+     Humanoid.prototype.catchPhrase = function() {
+    return `${this.catchPhrase}`;
   };
-
-
-  function Villain(villainAttributes) {
-    Humanoid.call(this, villainAttributes); //binds villain to humanoid
-    this.laugh = villainAttributes.laugh;
-  }
-    Villain.prototype = Object.create(Villain.prototype);
-
-    Villain.prototype.laugh = function() {
-      return `${this.laugh}`;
-    };
-
-  function Hero(heroAttributes) {
-    Villain.call(this, heroAttributes);
-    this.catchPhrase = heroAttributes.catchPhrase;
-  }
-    Hero.prototype = Object.create(Hero.prototype);
-
-    Hero.prototype.catchPhrase = function() {
-      return `${this.catchPhrase}`;
-    };
-
-
-
-
-
 
 
 
@@ -230,7 +210,7 @@ CharacterStats.prototype.takeDamage = function() {
   console.log(hero.takeDamage());
   console.log(villain.laugh);
   console.log(hero.weapons);
-  console.log(villain.takeDamage);
+  console.log(villain.takeDamage());
   console.log(villain.destroy());
   console.log(hero.catchPhrase);
 
