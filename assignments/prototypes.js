@@ -85,6 +85,26 @@ CharacterStats.prototype.takeDamage = function() {
   };
 
 
+  function Villain(villainAttributes) {
+    Humanoid.call(this, villainAttributes); //binds villain to humanoid
+    this.laugh = villainAttributes.laugh;
+  }
+    Villain.prototype = Object.create(Villain.prototype);
+
+    Villain.prototype.laugh = function() {
+      return `${this.laugh}`;
+    };
+
+  function Hero(heroAttributes) {
+    Villain.call(this, heroAttributes);
+    this.catchPhrase = heroAttributes.catchPhrase;
+  }
+    Hero.prototype = Object.create(Hero.prototype);
+
+    Hero.prototype.catchPhrase = function() {
+      return `${this.catchPhrase}`;
+    };
+
 
 
 
@@ -150,6 +170,44 @@ CharacterStats.prototype.takeDamage = function() {
     language: 'Elvish',
   });
 
+
+  const villain = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 3,
+      width: 4,
+      height: 7,
+    },
+    healthPoints: 15,
+    name: ' Dr Evil ',
+    team: 'Munchkins',
+    weapons: [
+      'Brain',
+      'Mini Me',
+    ],
+    language: 'Olde English',
+    laugh: 'MWAHAHAHAHAHA',
+    });
+  
+  const hero = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 6,
+      width: 8,
+      height: 10,
+    },
+    healthPoints: 20,
+    name: 'Shrek',
+    team: 'Donkey',
+    weapons: [
+      'Stench',
+      'Strength',
+    ],
+    language: 'Olde English',
+    catchPhrase: 'No need to fear, a stinky ogre is here!',
+    });
+
+
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
@@ -160,6 +218,22 @@ CharacterStats.prototype.takeDamage = function() {
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+
+
+  console.log(villain.createdAt);
+  console.log(hero.createdAt);
+  console.log(villain.name);
+  console.log(villain.healthPoints);
+  console.log(hero.name);
+  console.log(hero.healthPoints);
+  console.log(villain.weapons);
+  console.log(hero.takeDamage());
+  console.log(villain.laugh);
+  console.log(hero.weapons);
+  console.log(villain.takeDamage);
+  console.log(villain.destroy());
+  console.log(hero.catchPhrase);
+
 
 
   // Stretch task: 
