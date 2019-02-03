@@ -31,7 +31,7 @@ const cats = {
     food: "tuna",
     toy: "ball",
     play: function() {
-        console.log(`${name} loves to play ${this.toy}`)
+        console.log(`${this.name} loves to play ${this.toy}`)
     }
 }
 
@@ -71,30 +71,35 @@ const cat = {
   
   
   function personality(){
-    console.log(`${this.name} is ${traits}`)
+    console.log(`${this.name} is ${traits}`);
   }
   
-  personality.call(cat);
-
+  //personality.call(cat); 
+//works//
+  
   //playing with .apply// 
 
-  const cat = {
-    name: 'Stripes',
+  const chat = {
+    name: 'Tiger',
   }
   
-  const traits1 = ['fierce'];
-  const traits2 = ['tired'];
-  const traits3 = ['short'];
+  const char1 = ['fierce'];
+  const char2 = ['loyal'];
+  const char3 = ['fast'];
   
   
   function personality(){
-    console.log(`${this.name} is ${traits1}`)
-  }
+    console.log(`${this.name} is ${char1}`);
+
+   }    
+  personality.apply(chat);
+  //works//
+ 
+
   
-  personality.apply(cat);
 
   //testing out bind// 
-  const testingOutBind = personality.bind(cat);
+  // const testingOutBind = personality.bind(cat);
+  // }
 
-
-  //works!
+  //works!//
